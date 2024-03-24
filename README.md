@@ -21,5 +21,6 @@ $ ./docker-setup.sh --load --image-name myimage
 ### Run Docker Image
 
 ```bash
+mkdir -p $(pwd)/workspace
 $ ./docker-setup.sh --run --image-name myimage
 ```
