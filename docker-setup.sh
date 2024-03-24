@@ -12,6 +12,7 @@ HOSTGNAME=$(id -gn $USER)
 CTYPE="" # Container type
 COMMAND=""
 OPASSWORD="" # Optional password
+WORKSPACE="${CDIR}/workspace"
 
 help_msg() {
 	fname=$1
@@ -95,7 +96,7 @@ DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 
 [[ "${COMMAND}" == "run" ]] && {
 	docker run --rm -ti \
-		-v $(pwd):/home/${USER} \
+		-v ${WORKSPACE}:/home/${USER} \
 		-eHOST_UID="${HOSTUID}" \
 		-eHOST_UNAME="${HOSTUNAME}" \
 		-eHOST_GID="${HOSTGID}" \
