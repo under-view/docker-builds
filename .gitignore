@@ -1,3 +1,4 @@
 *.tar*
-workspace
 *.swp
+workspace
+docker-images

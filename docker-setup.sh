@@ -14,8 +14,10 @@ DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 	      --tag "${DOCKER_IMAGE_NAME}" \
 	      "${CDIR}/containers/${CTYPE}/${DISTRO_VERSION}"
 
+	mkdir -p "${CDIR}/docker-images"
+
 	docker image \
-	       save -o "${CDIR}/${DIMAGE}.tar.xz" \
+	       save -o "${CDIR}/docker-images/${DIMAGE}.tar.xz" \
 	       "${DOCKER_IMAGE_NAME}"
 }
 
