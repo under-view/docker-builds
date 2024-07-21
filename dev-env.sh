@@ -2,9 +2,9 @@
 
 CDIR="$(pwd)"
 
-HOSTUID="$(id -u $USER)"
+HOSTUID="1058"
 HOSTUNAME="$(id -un $USER)"
-HOSTGID="$(id -g $USER)"
+HOSTGID="$(getent group docker | cut -d ':' -f3)"
 HOSTGNAME="$(id -gn $USER)"
 
 CTYPE=""     # Container type
