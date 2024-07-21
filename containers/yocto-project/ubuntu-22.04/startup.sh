@@ -9,6 +9,6 @@ echo "${HOST_UNAME} ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 chown "${HOST_UNAME}":"${HOST_GNAME}" "/home/${HOST_UNAME}" > /dev/null 2>&1
 mv /env-spice.sh "/home/${HOST_UNAME}" > /dev/null 2>&1
-chown "${HOST_UNAME}":"${HOST_GNAME}" "/home/${HOST_UNAME}/enter-env.sh" > /dev/null 2>&1
+chown "${HOST_UNAME}":"${HOST_GNAME}" "/home/${HOST_UNAME}/env-spice.sh" > /dev/null 2>&1
 
 su -s /bin/bash - ${HOST_UNAME}
