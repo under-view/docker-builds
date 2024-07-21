@@ -20,6 +20,6 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 COPY startup.sh /startup.sh
-COPY enter-env.sh /enter-env.sh
+COPY env-spice.sh /env-spice.sh
 
 ENTRYPOINT source /startup.sh
