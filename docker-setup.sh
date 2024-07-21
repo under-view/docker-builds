@@ -5,6 +5,7 @@
 
 DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 
+[[ -z "${WORKSPACE}" ]] && WORKSPACE="${CDIR}/workspace"
 [[ -z "${OPASSWORD}" ]] && OPASSWORD="password"
 
 [[ "${COMMAND}" == "build" ]] && [[ -n "${CTYPE}" ]] && {
