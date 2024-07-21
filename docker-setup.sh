@@ -18,7 +18,7 @@ help_msg() {
 	fname=$1
 
 	printf "Usage: ${fname} [options]\n"
-	printf "Example: ${fname} --build --image-name <name> --container-type yocto-project\n"
+	printf "Example: ${fname} --build --image-name <name> --container-type yocto-project --distro-version ubuntu-24.04\n"
 	printf "Options:\n"
 	printf "\t-b, --build                           " ; printf "\tBuild and save docker image\n"
 	printf "\t-r, --run                             " ; printf "\tRun docker image\n"
