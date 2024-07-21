@@ -11,7 +11,7 @@ Follow one of the [docker install](https://docs.docker.com/engine/install) instr
 This will also save the docker image.
 
 ```bash
-$ ./docker-setup.sh --build --image-name myimage --container-type yocto-project
+$ ./docker-setup.sh --build --image-name myimage --container-type yocto-project --distro-version ubuntu-22.04
 ```
 
 ### Load Docker Image
@@ -19,7 +19,7 @@ $ ./docker-setup.sh --build --image-name myimage --container-type yocto-project
 Tar file with image must be in same directory as docker-setup.sh script
 
 ```bash
-$ ./docker-setup.sh --load --image-name myimage
+$ ./docker-setup.sh --load --image-name myimage.tar.xz
 ```
 
 ### Run Docker Image

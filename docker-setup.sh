@@ -26,6 +26,7 @@ help_msg() {
 	printf "\t-i, --image-name   <name>             " ; printf "\tSpecify name of docker image to build,run, or save.\n"
 	printf "\t-p, --password     <optional password>" ; printf "\tAssign optional password to docker container user\n"
 	printf "\t-t, --container-type <project>        " ; printf "\tType of docker container. Normally specified to 'yocto-project'\n"
+	printf "\t-d, --distro-version <distro+version> " ; printf "\tDistro and version used to build image\n"
 	printf "\t-h, --help                            " ; printf "\tSee this message\n"
 }
 
@@ -58,6 +59,10 @@ for ((arg=1; arg<=$#; arg++)); do
 			CTYPE="${!arg_passed_to_flag}"
 			((arg++))
 			;;
+		-d|--distro-version)
+			DISTRO_VERSION="${!arg_passed_to_flag}"
+			((arg++))
+			;;
 		-h|--help)
 			help_msg $0
 			exit 1
@@ -83,7 +88,7 @@ DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 	docker build \
 	      --no-cache \
 	      --tag "${DOCKER_IMAGE_NAME}" \
-	      "${CDIR}/containers/${CTYPE}"
+	      "${CDIR}/containers/${CTYPE}/${DISTRO_VERSION}"
 
 	docker image \
 	       save -o "${CDIR}/${DIMAGE}.tar.xz" \
