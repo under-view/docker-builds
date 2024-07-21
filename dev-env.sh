@@ -26,7 +26,7 @@ help_msg() {
 	printf "\t-p, --password       <optional password>" ; printf "\tAssign optional password to docker container user.\n"
 	printf "\t-t, --container-type <project>          " ; printf "\tType of docker container. Normally specified to 'yocto-project'.\n"
 	printf "\t-d, --distro-version <distro+version>   " ; printf "\tDistro and version used to build image.\n"
-	printf "\t-d, --workspace-dir  <workspace>        " ; printf "\tAbsolute path to a directory the docker will mount as /home/\$USER.\n"
+	printf "\t-w, --workspace      <workspace>        " ; printf "\tAbsolute path to a directory the docker will mount as /home/\$USER.\n"
 	printf "\t-h, --help                              " ; printf "\tSee this message.\n"
 }
 
@@ -61,6 +61,10 @@ for ((arg=1; arg<=$#; arg++)); do
 			;;
 		-d|--distro-version)
 			DISTRO_VERSION="${!arg_passed_to_flag}"
+			((arg++))
+			;;
+		-w|--workspace)
+			WORKSPACE="${!arg_passed_to_flag}"
 			((arg++))
 			;;
 		-h|--help)

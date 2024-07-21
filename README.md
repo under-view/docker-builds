@@ -25,5 +25,5 @@ $ ./dev-env.sh --load --image-name myimage.tar.xz
 ### Run Docker Image
 
 ```bash
-$ ./dev-env.sh --run --image-name myimage
+$ ./dev-env.sh --run --image-name myimage --workspace $(pwd)/workspace-yocto-rolling
 ```
