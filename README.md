@@ -2,6 +2,10 @@
 
 Repo with scripts and docker files for different types of builds
 
+### Dependencies
+
+Follow one of the [docker install](https://docs.docker.com/engine/install) instructions.
+
 ### Build Docker Image
 
 This will also save the docker image.
