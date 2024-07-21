@@ -2,18 +2,19 @@
 
 CDIR="$(pwd)"
 
-HOSTUID=$(id -u $USER)
-HOSTUNAME=$(id -un $USER)
-HOSTGID=$(id -g $USER)
-HOSTGNAME=$(id -gn $USER)
+HOSTUID="$(id -u $USER)"
+HOSTUNAME="$(id -un $USER)"
+HOSTGID="$(id -g $USER)"
+HOSTGNAME="$(id -gn $USER)"
 
-CTYPE="" # Container type
-COMMAND=""
-OPASSWORD="" # Optional password
-WORKSPACE="" # Optional workspace directory
+CTYPE=""     # Container type
+DIMAGE=""    # Docker image
+COMMAND=""   # Docker command
+PASSWORD=""  # Optional: docker container password for user
+WORKSPACE="" # Optional: workspace directory docker mounts to /home/$USER
 
 help_msg() {
-	fname=$1
+	fname="$1"
 
 	printf "Usage: ${fname} [options]\n"
 	printf "Example: ${fname} --build --image-name <name> --container-type yocto-project --distro-version ubuntu-24.04\n"
@@ -30,7 +31,7 @@ help_msg() {
 }
 
 [[ $# -eq 0 ]] && {
-	help_msg $0
+	help_msg "$0"
 	exit 1
 }
 
@@ -73,8 +74,13 @@ for ((arg=1; arg<=$#; arg++)); do
 	esac
 done
 
+# If no command flags specified display help message
 [[ -z "${COMMAND}" ]] && { help_msg $0 ; exit 1 ; }
+
+# If a docker image type not specified display help message
 [[ -z "${DIMAGE}" ]] && { help_msg $0 ; exit 1 ; }
+
+# If build flag choosen and container-type flag empty display help message
 [[ "${COMMAND}" == "build" ]] && [[ -z "${CTYPE}" ]] && { help_msg $0 ; exit 1 ; }
 
 source "${CDIR}/docker-setup.sh"

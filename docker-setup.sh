@@ -6,7 +6,7 @@
 DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 
 [[ -z "${WORKSPACE}" ]] && WORKSPACE="${CDIR}/workspace"
-[[ -z "${OPASSWORD}" ]] && OPASSWORD="password"
+[[ -z "${PASSWORD}" ]] && PASSWORD="password"
 
 [[ "${COMMAND}" == "build" ]] && [[ -n "${CTYPE}" ]] && {
 	docker build \
@@ -31,6 +31,6 @@ DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 		-eHOST_UNAME="${HOSTUNAME}" \
 		-eHOST_GID="${HOSTGID}" \
 		-eHOST_GNAME="${HOSTGNAME}" \
-		-eDOCKER_PASSWORD="${OPASSWORD}" \
+		-eDOCKER_PASSWORD="${PASSWORD}" \
 		"${DOCKER_IMAGE_NAME}" /bin/bash
 }
