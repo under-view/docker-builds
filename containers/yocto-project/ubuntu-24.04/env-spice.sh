@@ -54,10 +54,3 @@ alias l='ls -CF'
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-export DL_DIR="/home/${USER}/downloads"
-export SSTATE_DIR="/home/${USER}/sstate"
-export BUILD_OUTPUT_DIR="/home/${USER}/build-output"
-export BB_ENV_PASSTHROUGH_ADDITIONS="DL_DIR SSTATE_DIR"
-
-source /home/${USER}/poky/oe-init-build-env ${BUILD_OUTPUT_DIR}
