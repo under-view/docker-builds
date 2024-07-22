@@ -29,6 +29,7 @@ DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 	mkdir -p "${WORKSPACE}"
 	docker run --rm -ti \
 		-v "${WORKSPACE}":"/home/${USER}" \
+		-v "/home/${USER}/.ssh":"/home/${USER}/.ssh" \
 		-eHOST_UID="${HOSTUID}" \
 		-eHOST_UNAME="${HOSTUNAME}" \
 		-eHOST_GID="${HOSTGID}" \
