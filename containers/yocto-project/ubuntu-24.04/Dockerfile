@@ -12,6 +12,7 @@ RUN apt update && apt install -y gawk wget git diffstat \
     rm -rf /var/lib/apt/lists/*
 
 RUN rm /bin/sh && ln -s bash /bin/sh
+RUN userdel -r ubuntu
 
 RUN locale-gen en_US.UTF-8 && \
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
