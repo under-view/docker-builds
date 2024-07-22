@@ -8,7 +8,7 @@ RUN apt update && apt install -y gawk wget git diffstat \
     python3 python3-pip python3-pexpect xz-utils debianutils \
     iputils-ping python3-git python3-jinja2 libegl1-mesa \
     libsdl1.2-dev python3-subunit mesa-common-dev zstd \
-    liblz4-tool file locales libacl1 vim screen \
+    liblz4-tool file locales libacl1 vim screen curl \
     bash-completion net-tools && \
     rm -rf /var/lib/apt/lists/*
 
