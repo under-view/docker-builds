@@ -29,7 +29,10 @@ DOCKER_IMAGE_NAME="${DIMAGE}:latest"
 	mkdir -p "${WORKSPACE}"
 	docker run --rm -ti \
 		-v "${WORKSPACE}":"/home/${USER}" \
-		-v "/home/${USER}/.ssh":"/home/${USER}/.ssh" \
+		-v "${HOME}/.ssh":"/home/${USER}/.ssh":ro \
+		-v "${HOME}/.Xauthority":"/home/${USER}/.Xauthority":ro \
+		-v "/tmp/.X11-unix":"/tmp/.X11-unix":ro \
+		-e DISPLAY="localhost:0" \
 		-eHOST_UID="${HOSTUID}" \
 		-eHOST_UNAME="${HOSTUNAME}" \
 		-eHOST_GID="${HOSTGID}" \
