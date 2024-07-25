@@ -30,6 +30,7 @@ help_msg() {
 	printf "\t-h, --help                              " ; printf "\tSee this message.\n"
 }
 
+
 container_list() {
 	carg=$1
 	exists=0
@@ -43,10 +44,33 @@ container_list() {
 
 	help_msg "$0"
 
-	printf "\nContainer List\n"
+	printf "\nSupported Containers\n"
 	for container in "${CDIR}/containers"/*; do
 		container="$(basename "${container}")"
 		printf "\t[x] ${container}\n"
+	done
+
+	exit 1
+}
+
+
+distro_list() {
+	darg=$1
+	exists=0
+
+	for distro in "${CDIR}/containers/${CTYPE}"/*; do
+		distro="$(basename "${distro}")"
+		[[ "${darg}" == "${distro}" ]] && exists=1
+	done
+
+	[[ "${exists}" -eq 1 ]] && return 0
+
+	help_msg "$0"
+
+	printf "\nSupported Distro's\n"
+	for distro in "${CDIR}/containers/${CTYPE}"/*; do
+		distro="$(basename "${distro}")"
+		printf "\t[x] ${distro}\n"
 	done
 
 	exit 1
@@ -85,6 +109,7 @@ for ((arg=1; arg<=$#; arg++)); do
 			;;
 		-d|--distro-version)
 			DISTRO_VERSION="${!arg_passed_to_flag}"
+			distro_list "${DISTRO_VERSION}" "${CTYPE}"
 			((arg++))
 			;;
 		-w|--workspace)
