@@ -30,6 +30,29 @@ help_msg() {
 	printf "\t-h, --help                              " ; printf "\tSee this message.\n"
 }
 
+container_list() {
+	carg=$1
+	exists=0
+
+	for container in "${CDIR}/containers"/*; do
+		container="$(basename "${container}")"
+		[[ "${carg}" == "${container}" ]] && exists=1
+	done
+
+	[[ "${exists}" -eq 1 ]] && return 0
+
+	help_msg "$0"
+
+	printf "\nContainer List\n"
+	for container in "${CDIR}/containers"/*; do
+		container="$(basename "${container}")"
+		printf "\t[x] ${container}\n"
+	done
+
+	exit 1
+}
+
+
 [[ $# -eq 0 ]] && {
 	help_msg "$0"
 	exit 1
@@ -57,6 +80,7 @@ for ((arg=1; arg<=$#; arg++)); do
 			;;
 		-t|--container-type)
 			CTYPE="${!arg_passed_to_flag}"
+			container_list "${CTYPE}"
 			((arg++))
 			;;
 		-d|--distro-version)
