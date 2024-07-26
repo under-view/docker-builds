@@ -1,0 +1,5 @@
+export HOSTUID="$(id -u $USER)"
+export HOSTUNAME="$(id -un $USER)"
+export HOSTGID="$(id -g $USER)"
+export HOSTGNAME="$(id -gn $USER)"
+export XDISPLAY="localhost:0"

@@ -1,0 +1,18 @@
+name: default-config
+services:
+  development:
+    image: ${DOCKER_IMAGENAME}
+    command: /bin/bash
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - ${DOCKER_WORKSPACE}:${DOCKER_HOME}
+      - ${DOCKER_HOME}/.ssh:${DOCKER_HOME}/.ssh:ro
+      - ${DOCKER_HOME}/.Xauthority:${DOCKER_HOME}/.Xauthority:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    environment:
+      DISPLAY: ${XDISPLAY}
+      HOST_UID: ${HOSTUID}
+      HOST_UNAME: ${HOSTUNAME}
+      HOST_GID: ${HOSTGID}
+      HOST_GNAME: ${HOSTGNAME}
