@@ -4,35 +4,41 @@ Repo with scripts and docker files for different types of builds.
 This repo will take another approach by not writing wrapper scripts
 around docker commands.
 
-### Dependencies
+1. [Dependencies](#dependencies)
+2. [Building Docker Images](#building)
+3. [Saving Docker Images](#saving)
+4. [Loading Docker Image](#loading)
+5. [Running Docker Image](#running)
+
+## Dependencies <a name="dependencies"></a>
 
 Follow one of the [docker install](https://docs.docker.com/engine/install) instructions.
 
-### Build Docker Image
+## Building Docker Images <a name="building"></a>
 
-**Underview Devel Ubuntu 22.04**
+### Underview Devel Ubuntu 22.04
 ```bash
 $ docker build --no-cache --tag "myimage" $(pwd)/containers/underview-devel/ubuntu-22.04
 ```
 
-**Yocto Project Devel Ubuntu 22.04**
+### Yocto Project Devel Ubuntu 22.04
 ```bash
 $ docker build --no-cache --tag "myimage" $(pwd)/containers/yocto-project/ubuntu-22.04
 ```
 
-**Yocto Project Devel Ubuntu 24.04**
+### Yocto Project Devel Ubuntu 24.04
 ```bash
 $ docker build --no-cache --tag "myimage" $(pwd)/containers/yocto-project/ubuntu-24.04
 ```
 
-### Save Docker Image
+## Saving Docker Images <a name="saving"></a>
 
 ```bash
 $ mkdir -p $(pwd)/docker-images
 $ docker image save -o $(pwd)/docker-images/myimage.tar.xz
 ```
 
-### Load Docker Image
+## Loading Docker Image <a name="loading"></a>
 
 Tar file with image must be in same directory as docker-setup.sh script
 
@@ -40,7 +46,7 @@ Tar file with image must be in same directory as docker-setup.sh script
 $ docker image load -i myimage.tar.xz
 ```
 
-### Run Docker Image
+## Running Docker Image <a name="running"></a>
 
 ```bash
 $ export DOCKER_IMAGE_NAME="myimage:latest"
