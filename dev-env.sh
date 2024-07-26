@@ -10,7 +10,6 @@ HOSTGNAME="$(id -gn $USER)"
 CTYPE=""     # Container type
 DIMAGE=""    # Docker image
 COMMAND=""   # Docker command
-PASSWORD=""  # Optional: docker container password for user
 WORKSPACE="" # Optional: workspace directory docker mounts to /home/$USER
 
 help_msg() {
@@ -23,7 +22,6 @@ help_msg() {
 	printf "\t-r, --run                               " ; printf "\tRun docker image.\n"
 	printf "\t-l, --load                              " ; printf "\tLoad saved docker image.\n"
 	printf "\t-i, --image-name     <name>             " ; printf "\tSpecify name of docker image to build,run, or save.\n"
-	printf "\t-p, --password       <optional password>" ; printf "\tAssign optional password to docker container user.\n"
 	printf "\t-t, --container-type <project>          " ; printf "\tType of docker container. Normally specified to 'yocto-project'.\n"
 	printf "\t-d, --distro-version <distro+version>   " ; printf "\tDistro and version used to build image.\n"
 	printf "\t-w, --workspace      <workspace>        " ; printf "\tAbsolute path to a directory the docker will mount as /home/\$USER.\n"
@@ -96,10 +94,6 @@ for ((arg=1; arg<=$#; arg++)); do
 			;;
 		-i|--image-name)
 			DIMAGE="${!arg_passed_to_flag}"
-			((arg++))
-			;;
-		-p|--password)
-			OPASSWORD="${!arg_passed_to_flag}"
 			((arg++))
 			;;
 		-t|--container-type)
