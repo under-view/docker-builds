@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -y && apt install -y aptitude
 RUN aptitude install -y build-essential cmake clang automake autoconf autopoint libtool flex bison m4 yasm dos2unix software-properties-common
-RUN aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev locales gettext
+RUN aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev locales gettext unzip
 RUN python3 -m pip install meson==1.3.1 Mako jinja2
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && apt update -y
