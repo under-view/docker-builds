@@ -7,6 +7,7 @@ around docker commands.
 1. [Dependencies](#dependencies)
 2. [Building Docker Images](#building)
 	1. [Underview Devel Ubuntu 22.04](#udevel-ubuntu22.04)
+	1. [Underview Devel Ubuntu 24.04](#udevel-ubuntu24.04)
 	2. [Yocto Project Devel Ubuntu 22.04](#ypdevel-ubuntu22.04)
 	3. [Yocto Project Devel Ubuntu 24.04](#ypdevel-ubuntu24.04)
 3. [Saving Docker Images](#saving)
@@ -22,6 +23,11 @@ Follow one of the [docker install](https://docs.docker.com/engine/install) instr
 ### Underview Devel Ubuntu 22.04 <a name="udevel-ubuntu22.04"></a>
 ```bash
 $ docker build --no-cache --tag "myimage" $(pwd)/containers/underview-devel/ubuntu-22.04
+```
+
+### Underview Devel Ubuntu 24.04 <a name="udevel-ubuntu24.04"></a>
+```bash
+$ docker build --no-cache --tag "myimage" $(pwd)/containers/underview-devel/ubuntu-24.04
 ```
 
 ### Yocto Project Devel Ubuntu 22.04 <a name="ypdevel-ubuntu22.04"></a>
