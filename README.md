@@ -60,5 +60,5 @@ $ export DOCKER_IMAGE_NAME="myimage:latest"
 $ export WORKSPACE="${HOME}/workspace"
 $ mkdir -p $WORKSPACE
 $ source $(pwd)/composes/default-env.sh
-$ docker compose -f $(pwd)/composes/default-compose.yaml run development
+$ docker compose -f $(pwd)/composes/default-compose.yaml run --rm development
 ```
