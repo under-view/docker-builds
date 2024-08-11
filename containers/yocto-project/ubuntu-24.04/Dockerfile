@@ -16,10 +16,17 @@ RUN userdel -r ubuntu
 
 RUN locale-gen en_US.UTF-8 && \
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
-COPY startup.sh /startup.sh
-COPY env-spice.sh /env-spice.sh
+ARG USER_NAME=developer
+ARG HOST_UID=1001
+ARG HOST_GID=1001
+RUN groupadd -g $HOST_GID $USER_NAME && \
+    useradd -g $HOST_GID -m -s /bin/bash -u $HOST_UID $USER_NAME
 
-ENTRYPOINT source /startup.sh
+COPY env-spice.sh /home/$USER_NAME/env-spice.sh
+
+USER $USER_NAME
+
+WORKDIR /home/$USER_NAME
