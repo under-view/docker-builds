@@ -21,23 +21,43 @@ Follow one of the [docker install](https://docs.docker.com/engine/install) instr
 ## Building Docker Images <a name="building"></a>
 
 ### Underview Devel Ubuntu 22.04 <a name="udevel-ubuntu22.04"></a>
+
 ```bash
-$ docker build --no-cache --tag "myimage" $(pwd)/containers/underview-devel/ubuntu-22.04
+$ docker build --no-cache \
+               --tag "myimage:latest" \
+               --build-arg "HOST_UID=$(id -u)" \
+               --build-arg "HOST_GID=$(id -g)" \
+               $(pwd)/containers/underview-devel/ubuntu-22.04
 ```
 
 ### Underview Devel Ubuntu 24.04 <a name="udevel-ubuntu24.04"></a>
+
 ```bash
-$ docker build --no-cache --tag "myimage" $(pwd)/containers/underview-devel/ubuntu-24.04
+$ docker build --no-cache \
+               --tag "myimage:latest" \
+               --build-arg "HOST_UID=$(id -u)" \
+               --build-arg "HOST_GID=$(id -g)" \
+               $(pwd)/containers/underview-devel/ubuntu-24.04
 ```
 
 ### Yocto Project Devel Ubuntu 22.04 <a name="ypdevel-ubuntu22.04"></a>
+
 ```bash
-$ docker build --no-cache --tag "myimage" $(pwd)/containers/yocto-project/ubuntu-22.04
+$ docker build --no-cache \
+               --tag "myimage:latest" \
+               --build-arg "HOST_UID=$(id -u)" \
+               --build-arg "HOST_GID=$(id -g)" \
+               $(pwd)/containers/yocto-project/ubuntu-22.04
 ```
 
 ### Yocto Project Devel Ubuntu 24.04 <a name="ypdevel-ubuntu24.04"></a>
+
 ```bash
-$ docker build --no-cache --tag "myimage" $(pwd)/containers/yocto-project/ubuntu-24.04
+$ docker build --no-cache \
+               --tag "myimage:latest" \
+               --build-arg "HOST_UID=$(id -u)" \
+               --build-arg "HOST_GID=$(id -g)" \
+               $(pwd)/containers/yocto-project/ubuntu-24.04
 ```
 
 ## Saving Docker Images <a name="saving"></a>
