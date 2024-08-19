@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -y
 RUN apt install -y build-essential cmake clang automake autoconf autopoint libtool flex bison m4 yasm dos2unix software-properties-common
-RUN apt install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev locales gettext unzip
+RUN apt install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev locales gettext unzip help2man device-tree-compiler
 RUN python3 -m pip install meson==1.3.1 Mako jinja2 --break-system-packages
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && apt update -y
@@ -15,6 +15,7 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 90 --slave /u
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
 
 RUN rm /bin/sh && ln -s bash /bin/sh
+RUN userdel -r ubuntu
 
 RUN locale-gen en_US.UTF-8 && \
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
