@@ -1,4 +1,4 @@
-name: default-config
+name: default-graphics-config
 services:
   development:
     image: ${DOCKER_IMAGENAME}
@@ -8,3 +8,7 @@ services:
     volumes:
       - ${DOCKER_WORKSPACE}:${DOCKER_HOME}
       - ${HOME}/.ssh:${DOCKER_HOME}/.ssh:ro
+      - ${HOME}/.Xauthority:${DOCKER_HOME}/.Xauthority:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    environment:
+      DISPLAY: ${XDISPLAY}
