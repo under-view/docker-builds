@@ -19,6 +19,10 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100 --slave /
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 90 --slave /usr/bin/g++ g++ /usr/bin/g++-12 --slave /usr/bin/gcov gcov /usr/bin/gcov-12
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
 
+COPY build-riscv-64.sh /build-riscv-64.sh
+RUN bash /build-riscv-64.sh
+RUN rm -f /build-riscv-64.sh
+
 RUN rm /bin/sh && ln -s bash /bin/sh
 RUN userdel -r ubuntu
 
