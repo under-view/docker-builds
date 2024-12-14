@@ -14,10 +14,14 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN python3 -m pip install meson==1.3.1 Mako jinja2
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && apt update -y
-RUN aptitude install -y gcc-13 gcc-12 gcc-11 g++-13 g++-12 g++-11
+RUN apt install -y gcc-13 gcc-12 gcc-11 g++-13 g++-12 g++-11
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100 --slave /usr/bin/g++ g++ /usr/bin/g++-13 --slave /usr/bin/gcov gcov /usr/bin/gcov-13
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 90 --slave /usr/bin/g++ g++ /usr/bin/g++-12 --slave /usr/bin/gcov gcov /usr/bin/gcov-12
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+
+COPY build-riscv-64.sh /build-riscv-64.sh
+RUN bash /build-riscv-64.sh
+RUN rm -f /build-riscv-64.sh
 
 RUN rm /bin/sh && ln -s bash /bin/sh
 
