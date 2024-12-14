@@ -3,9 +3,14 @@ FROM ubuntu:22.04
 ENV TZ=US/Detroit
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update -y && apt install -y aptitude
-RUN aptitude install -y build-essential cmake clang automake autoconf autopoint libtool flex bison m4 yasm dos2unix software-properties-common
-RUN aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev locales gettext unzip
+RUN apt update -y
+RUN apt install -y build-essential cmake clang automake autoconf autopoint autotools-dev
+RUN apt install -y libtool flex m4 yasm dos2unix software-properties-common
+RUN apt install -y pkg-config python3 python3-pip ninja-build curl wget git gperf
+RUN apt install -y texinfo libmount-dev locales gettext unzip help2man device-tree-compiler
+RUN apt install -y libmpc-dev libmpfr-dev libgmp-dev gawk patchutils bc zlib1g-dev libexpat-dev
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN python3 -m pip install meson==1.3.1 Mako jinja2
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && apt update -y
