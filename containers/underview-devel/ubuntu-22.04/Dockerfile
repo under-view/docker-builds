@@ -23,6 +23,10 @@ COPY build-riscv-64.sh /build-riscv-64.sh
 RUN bash /build-riscv-64.sh
 RUN rm -f /build-riscv-64.sh
 
+COPY build-icarus-verilog.sh /build-icarus-verilog.sh
+RUN bash /build-icarus-verilog.sh
+RUN rm -f /build-icarus-verilog.sh
+
 RUN rm /bin/sh && ln -s bash /bin/sh
 
 RUN locale-gen en_US.UTF-8 && \
