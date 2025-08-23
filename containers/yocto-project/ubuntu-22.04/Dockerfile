@@ -25,7 +25,7 @@ ARG HOST_GID=1001
 RUN groupadd -g $HOST_GID $USER_NAME && \
     useradd -g $HOST_GID -m -s /bin/bash -u $HOST_UID $USER_NAME
 
-COPY env-spice.sh /home/$USER_NAME/env-spice.sh
+COPY env-spice.sh /env-spice.sh
 
 USER $USER_NAME
 
