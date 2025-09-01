@@ -25,6 +25,9 @@ ARG HOST_GID=1001
 RUN groupadd -g $HOST_GID $USER_NAME && \
     useradd -g $HOST_GID -m -s /bin/bash -u $HOST_UID $USER_NAME
 
+RUN echo "$USER_NAME:$USER_NAME" | chpasswd
+RUN adduser $USER_NAME sudo
+
 COPY env-spice.sh /env-spice.sh
 
 USER $USER_NAME
