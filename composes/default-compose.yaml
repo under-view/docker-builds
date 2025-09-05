@@ -12,5 +12,7 @@ services:
       - ${HOME}/.git-credentials:${DOCKER_HOME}/.git-credentials:ro
       - ${HOME}/.vim:${DOCKER_HOME}/.vim:ro
       - ${HOME}/.vimrc:${DOCKER_HOME}/.vimrc:ro
+    cap_add:
+      - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
