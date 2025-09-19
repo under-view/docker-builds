@@ -28,7 +28,9 @@ RUN groupadd -g $HOST_GID $USER_NAME && \
 RUN echo "$USER_NAME:$USER_NAME" | chpasswd
 RUN adduser $USER_NAME sudo
 
-COPY env-spice.sh /env-spice.sh
+COPY extra-alias.sh /etc/profile.d
+COPY extra-env-vars.sh /etc/profile.d
+COPY set-bash-prompt.sh /etc/profile.d
 
 USER $USER_NAME
 
