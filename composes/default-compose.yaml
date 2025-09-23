@@ -13,6 +13,7 @@ services:
       - ${HOME}/.vim:${DOCKER_HOME}/.vim:ro
       - ${HOME}/.vimrc:${DOCKER_HOME}/.vimrc:ro
     cap_add:
+      - MKNOD
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
