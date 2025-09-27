@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update -y
 RUN apt install -y build-essential cmake clang automake autoconf autopoint autotools-dev
 RUN apt install -y libtool bison flex m4 bc nasm dos2unix software-properties-common
-RUN apt install -y pkg-config python3 python3-pip ninja-build curl wget git gperf
-RUN apt install -y texinfo libmount-dev locales gettext unzip help2man sudo libssl-dev
+RUN apt install -y pkg-config python3 python3-pip ninja-build curl wget git vim gperf
+RUN apt install -y texinfo libmount-dev locales gettext unzip lzop help2man sudo libssl-dev
 RUN apt install -y libmpc-dev libmpfr-dev libgmp-dev gawk patchutils zlib1g-dev libexpat-dev
 RUN apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf device-tree-compiler
 RUN rm -rf /var/lib/apt/lists/*
