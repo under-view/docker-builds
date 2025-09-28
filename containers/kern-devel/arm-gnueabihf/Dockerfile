@@ -9,7 +9,7 @@ RUN apt install -y libtool bison flex m4 bc nasm dos2unix software-properties-co
 RUN apt install -y pkg-config python3 python3-pip ninja-build curl wget git vim gperf
 RUN apt install -y texinfo libmount-dev locales gettext unzip lzop help2man sudo libssl-dev
 RUN apt install -y libmpc-dev libmpfr-dev libgmp-dev gawk patchutils zlib1g-dev libexpat-dev
-RUN apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf device-tree-compiler
+RUN apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf device-tree-compiler kmod
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install meson==1.3.1 Mako jinja2 --break-system-packages
